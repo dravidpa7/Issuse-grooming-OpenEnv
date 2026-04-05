@@ -1,0 +1,31 @@
+name: issue-grooming-env
+version: "1.0.0"
+description: "Simulate open-source issue grooming: triage, deduplication, and prioritization of GitHub issues/PRs."
+tags:
+  - openenv
+  - code-review
+  - issue-triage
+  - developer-tools
+tasks:
+  - id: easy
+    description: "Triage 10 synthetic issues with clear labels and one obvious duplicate pair."
+    difficulty: easy
+    num_items: 10
+  - id: medium
+    description: "Triage 30 issues with noisy descriptions, borderline cases, and multiple duplicate clusters."
+    difficulty: medium
+    num_items: 30
+  - id: hard
+    description: "Triage 60+ issues across v2.6/v3.0 releases with conflicting signals, security items, and cascading duplicates."
+    difficulty: hard
+    num_items: 61
+action_space:
+  type: discrete
+  description: "Agent selects from: triage_item, mark_duplicate, set_priority, done"
+observation_space:
+  type: structured
+  description: "Pydantic Observation model containing list of Issue objects with id, title, body, labels, author_type, age_days, linked_prs, and current triage state."
+reward:
+  type: incremental
+  range: "[-1.0, 1.0]"
+  description: "Incremental reward per action. Correct triage/priority/duplicate decisions yield positive reward. Wrong closes of valid issues and wrong duplicate links yield penalties."

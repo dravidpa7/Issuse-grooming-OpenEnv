@@ -24,7 +24,9 @@
   <path d="M22 25 L24 27 L27 23" stroke="#0d2116" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
-# issue-grooming-env
+# issue-grooming-env 
+![Release](https://img.shields.io/badge/version-v1.0.0-blue)
+
 
 **An [OpenEnv](https://openenv.dev)-compatible RL environment simulating open-source issue grooming.**
 

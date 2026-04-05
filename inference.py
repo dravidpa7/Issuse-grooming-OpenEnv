@@ -25,7 +25,11 @@ API_BASE_URL = os.getenv("API_BASE_URL", "https://openrouter.ai/api/v1")
 MODEL_NAME   = os.getenv("MODEL_NAME",   "qwen/qwen3.6-plus:free")
 HF_TOKEN     = os.getenv("HF_TOKEN")
 
-MAX_STEPS  = 200   # max steps per task before force-stop
+# inference.py — change this:
+MAX_STEPS = 200   # max steps per task before force-stop
+
+# to match env's actual limits per task:
+MAX_STEPS_PER_TASK = {"easy": 60, "medium": 150, "hard": 300}
 MAX_FAILS  = 3    # max consecutive parse failures before force-stop
 MAX_RETRY  = 5    # max retries on 429 rate limit
 RETRY_WAIT = 10   # seconds to wait between retries on 429
@@ -227,7 +231,7 @@ def run_task(task_id: str) -> float:
 
     try:
         while not done:
-            if obs.step_number >= MAX_STEPS:
+            if obs.step_number >= MAX_STEPS_PER_TASK.get(task_id, 300):
                 print(f"  [FORCE STOP] step limit {MAX_STEPS} reached")
                 break
 

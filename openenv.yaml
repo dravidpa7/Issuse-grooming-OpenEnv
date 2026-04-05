@@ -1,3 +1,4 @@
+license: mit
 name: issue-grooming-env
 version: "1.0.0"
 description: "Simulate open-source issue grooming: triage, deduplication, and prioritization of GitHub issues/PRs."

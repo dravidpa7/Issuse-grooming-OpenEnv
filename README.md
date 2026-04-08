@@ -1,12 +1,3 @@
----
-title: Issue Grooming Env
-emoji: 🔍
-colorFrom: red
-colorTo: purple
-sdk: docker
-pinned: false
----
-
 <div align="center">
 
 <svg width="80" height="80" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -65,4 +65,4 @@ def grade(trajectory: list, final_state: dict) -> float:
     dup_score      = (duplicate_correct  / duplicate_total) if duplicate_total else 1.0
 
     raw = 0.55 * triage_score + 0.35 * priority_score + 0.10 * dup_score
-    return max(0.0, min(1.0, raw - penalty - loop_penalty))
+    return max(0.001, min(0.999, raw - penalty - loop_penalty))
